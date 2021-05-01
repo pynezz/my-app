@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function ReactApp() {
   return (
-    <div className="App">
+    <div className="ReactApp">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,6 +18,44 @@ function App() {
           Learn React
         </a>
       </header>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        
+        <section id="sec-one">
+          <div className="container container-top">
+            <h1>Short yet descriptive title</h1>
+            <div className="row">
+              <div id="item1">
+                <button className="top-button">
+                  <a href="#">Button</a>
+                </button>
+              </div>
+              <div id="item2">
+                <button className="top-button">
+                  <a href="#">
+                    Button
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div> 
+        </section>
+      </header>
+      <section className="sec-two">
+          <div className="container">
+            <div className="row">
+              <p>
+                1000
+              </p>
+            </div>
+          </div>
+        </section>
     </div>
   );
 }
