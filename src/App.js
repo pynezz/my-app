@@ -28,27 +28,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Section></Section>
-        <section id="sec-one">
-          <div className="container container-top">
-            <h1>Short yet descriptive title</h1>
-            <div className="row">
-              <div id="item1">
-                <button className="top-button">
-                  <a href="#">Button</a>
-                </button>
-              </div>
-              <div id="item2">
-                <button className="top-button">
-                  <a href="#">
-                    Button
-                  </a>
-                </button>
-              </div>
-            </div>
-          </div> 
-        </section>
-        <img src={expand_icon} className="expand-icon" alt="expand" onClick={Expand}></img>
+        <Section /> 
+        <ExpandImage />
       </header>
       <section className="sec-two">
           <div className="container">
@@ -56,9 +37,13 @@ function App() {
               <p>
                 1000
               </p>
+              <header>
+                <h1>Gjøremål</h1>
+              </header>
+              <Form />
             </div>
           </div>
-          <Form />
+          
         </section>
     </div>
   );
@@ -69,8 +54,39 @@ function Expand() {
   header.classList.add('showFooterStats');
 }
 
-function Section(props) {
-  return null
+const Section = () => {
+  return (
+    <section id="sec-one">
+      <div className="container container-top">
+        <h1>Short, yet descriptive title</h1>
+          <div className="row">
+            <div id="item1">
+              <button className="top-button">
+                <a href="#">Button</a>
+              </button>
+            </div>
+            <div id="item2">
+              <button className="top-button">
+                <a href="#">
+                  Button
+                </a>
+              </button>
+            </div>
+          </div>
+        </div> 
+      </section>
+  );
+}
+
+function ExpandImage() {
+  return (
+    <img 
+      src={expand_icon} 
+      className="expand-icon" 
+      alt="expand" 
+      onClick={Expand}>
+    </img>
+  );  
 }
 
 export default App;
