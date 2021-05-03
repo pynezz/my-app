@@ -1,21 +1,28 @@
-import React from "react"
+import React from "react";
 
-const Form = () => {
-    return (
-    <form>
-        <input type="text" className="todo-input" />
-        <button className="todo-button" type="submit">
-            <i className="fas fa-plus-square"></i>
-        </button>
-        <div className="select">
-            <select name="todos" className="filter-todo">
-                <option value="all">Alle</option>
-                <option value="completed">Fullført</option>
-                <option value="uncompleted">Ikke fullført</option>
-            </select>
-        </div>
-    </form>
-    );
-}
+const Form = ({ setInputText }) => {
+	const inputTextHandler = (e) => {
+    setInputText(e.target.value);
+	};
+	return (
+		<form>
+			<input 
+      onChange={ inputTextHandler } 
+      type="text" 
+      className="todo-input" 
+      />
+			<button className="todo-button" type="submit">
+				<i className="fas fa-plus-square"></i>
+			</button>
+			<div className="select">
+				<select className="todos" className="filter-todo">
+					<option value="all">Alle</option>
+					<option value="completed">Fullført</option>
+					<option value="uncompleted">Ikke fullført</option>
+				</select>
+			</div>
+		</form>
+	);
+};
 
 export default Form;
