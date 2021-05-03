@@ -2,7 +2,7 @@ import './App.css';
 import expand_icon from './icons/expand_less_white_24dp.svg';
 import Form from './components/Form';
 import TodoList from './components/TodoList'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // function ReactApp() {
 //   return (
@@ -25,16 +25,61 @@ import { useState } from 'react';
 //   );
 // }
 
+// TodoList Credit: Dev Ed https://www.youtube.com/watch?v=pCA4qpQDZD8
+
 function App() {
+
+  // States
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
+  const [status, setStatus] = useState("all");
+  const [filteredTodos, setFilteredTodos] = useState([]);
+
+  // Run ONCE when the app starts
+  useEffect(() => {
+    getLocalTodos();
+  }, []);
+
+  // Use effects
+  useEffect(() => {
+    filterHandler();
+    saveLocalTodos();
+  }, [todos, status]);  // Every time these states changes, run this function
+
+  const filterHandler = () => {
+    switch (status) {
+      case "completed":
+        setFilteredTodos(todos.filter(todo => todo.completed === true))
+        break;
+      case "uncompleted":
+        setFilteredTodos(todos.filter(todo => todo.completed === false))
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+  }
+
+  // Saving to local storage
+  const saveLocalTodos = () => {
+      localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
+  const getLocalTodos = () => {
+    if (localStorage.getItem('todos') === null) {
+      localStorage.setItem('todos', JSON.stringify([]));
+    } else {
+      let todoLocal = JSON.parse(localStorage.getItem('todos'));
+      setTodos(todoLocal);
+    }
+  }
   return (
     <div className="App">
       <header className="App-header">
         <Section /> 
         <ExpandImage />
       </header>
-      <section className="sec-two">
+      <section id="sec-two">
         <div className="container">
           <div className="row">
             <p>
@@ -56,8 +101,13 @@ function App() {
             setTodos     = { setTodos }
             inputText    = { inputText }
             setInputText = { setInputText }
+            setStatus    = { setStatus }            
           /> 
-          <TodoList />
+          <TodoList 
+            setTodos     = { setTodos } 
+            todos        = { todos }
+            filteredTodos= { filteredTodos }
+          />
         </div>
       </section>
     </div>
