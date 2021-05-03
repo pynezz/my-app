@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import expand_icon from './icons/expand_less_white_24dp.svg';
+import Form from './components/Form';
 
 function ReactApp() {
   return (
@@ -26,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
+        <Section></Section>
         <section id="sec-one">
           <div className="container container-top">
             <h1>Short yet descriptive title</h1>
@@ -46,6 +48,7 @@ function App() {
             </div>
           </div> 
         </section>
+        <img src={expand_icon} className="expand-icon" alt="expand" onClick={Expand}></img>
       </header>
       <section className="sec-two">
           <div className="container">
@@ -55,9 +58,19 @@ function App() {
               </p>
             </div>
           </div>
+          <Form />
         </section>
     </div>
   );
+}
+
+function Expand() {
+  var header = document.querySelector('App-header');
+  header.classList.add('showFooterStats');
+}
+
+function Section(props) {
+  return null
 }
 
 export default App;

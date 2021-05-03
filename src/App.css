@@ -24,6 +24,10 @@
   color: white;
 }
 
+.showFooterStats {
+  min-height: 85vh; 
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -58,8 +62,9 @@ body {
   margin-top: 0px;
   border: none;
   cursor: pointer;
-  padding: 1.5em 5em;
-  border-radius: 30em;
+  padding: 0.6em 1.2em;
+  max-width: 75vw;
+  border-radius: 3.5px;
   background-color: #61dafb;
 
 }
@@ -70,6 +75,7 @@ body {
 .top-button a {
   text-decoration: none;
   color: #282c34;
+  font-size: 42px;
 }
 
 .row {
@@ -87,8 +93,8 @@ body {
   margin: 0 auto;
 }
 
-.container-top {
-
+.expand-icon {
+  cursor: pointer;
 }
 
 section {
