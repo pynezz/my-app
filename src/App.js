@@ -27,6 +27,7 @@ import { useState } from 'react';
 
 function App() {
   const [inputText, setInputText] = useState("");
+  const [todos, setTodos] = useState([]);
   return (
     <div className="App">
       <header className="App-header">
@@ -37,10 +38,12 @@ function App() {
         <div className="container">
           <div className="row">
             <p>
-              Påloggede spillere: 0
+              Påloggede spillere: 
+                { Math.floor(Math.random() * 10) } 
+                {/* Cool! ^  */}
             </p>
             <p>
-              {inputText}
+              { inputText.toUpperCase() }
             </p>
           </div>
           <header>
@@ -48,7 +51,12 @@ function App() {
               Gjøremål
             </h1>
           </header>
-          <Form setInputText={setInputText} />
+          <Form 
+            todos        = { todos } 
+            setTodos     = { setTodos }
+            inputText    = { inputText }
+            setInputText = { setInputText }
+          /> 
           <TodoList />
         </div>
       </section>
